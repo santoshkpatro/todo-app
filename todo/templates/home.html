@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+</head>
+<body>
+    <h1 style="text-align: center;">TODO APPLICATION</h1>
+    <br>
+    <form action="{% url 'add' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Enter a task" name="text-input" style="margin-left: 25px; margin-right: 10px; background-color: coral; height: 25px; width: 200px;">
+        <button type="submit" style="width: 75px; background-color: blueviolet; height: 30px;">Add</button>
+    </form>
+    <br>
+    <br>
+    <div style="margin-left: 10px;">
+        {% for items in data %}
+            <form action="/delete/{{ items.id }}" method="POST">
+                {% csrf_token %}
+                {{ items.task }} 
+                <button type="submit" style="background-color: grey;">delete</button>
+                <br><br>
+            </form>
+        {% endfor %}
+    </div>
+</body>
+</html>
