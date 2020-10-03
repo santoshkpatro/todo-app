@@ -1,5 +1,5 @@
-# todo-app
-a simple todo app in django
+# Todo App
+A simple todo app in django
 
 Requirements:
 -Python
